@@ -132,7 +132,7 @@ form1.addEventListener('submit', function (e) {
   }
   function validateCardNumber (number) {
     var regex = new RegExp('^[0-9]{16}$')
-    if (!regex.test(number)) { return false}
+    if (!regex.test(number)) { return false }
 
     return luhnCheck(number)
   }
@@ -150,8 +150,8 @@ form1.addEventListener('submit', function (e) {
     }
     return (sum % 10) == 0
   }
-  for (let all of inputFields) {
-    let inputParentClasses = all.className
+  for (const all of inputFields) {
+    const inputParentClasses = all.className
     if (inputParentClasses !== 'input-field input-invalid text-danger') {
       total.innerHTML = '$ ' + cost
     } else {
