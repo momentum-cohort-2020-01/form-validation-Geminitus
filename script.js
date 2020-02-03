@@ -4,12 +4,10 @@ let currentTime = moment()
 
 form1.addEventListener("submit", function (e) {
     e.preventDefault();
-
     let nameInput = document.querySelector("#name")
     let name = nameInput.value
     let nameParent = nameInput.parentNode
     let nameRequired = document.querySelector(".name-required")
-
     if (name !== "") {
         nameParent.classList.remove("input-invalid")
         nameParent.classList.add("input-valid")
@@ -18,19 +16,15 @@ form1.addEventListener("submit", function (e) {
         nameParent.classList.add("input-invalid")
         nameRequired.innerText = "Name is required."
     }
-
     let carYearInput = document.querySelector("#car-year")
     let carMakeInput = document.querySelector("#car-make")
     let carModelInput = document.querySelector("#car-model")
     let carRequired = document.querySelector(".car-required")
-
     let carYear = carYearInput.value
     let carMake = carMakeInput.value
     let carModel = carModelInput.value
-
     let carParent = carYearInput.parentNode
     let carGramps = carParent.parentNode
-
     if ((carYear > 1900 && moment(carYear).isBefore(currentTime)) && carMake !== "" && carModel !== "") {
         carParent.classList.remove("input-invalid")
         carParent.classList.add("input-valid")
@@ -43,12 +37,10 @@ form1.addEventListener("submit", function (e) {
         carGramps.classList.remove("input-valid")
         carRequired.innerText = "Car Year/Make/Model is required."
     }
-
     let startDateInput = document.querySelector("#start-date")
     let startDate = startDateInput.value
     let startDateParent = startDateInput.parentNode
     let dateRequired = document.querySelector(".date-required")
-
     if (moment(startDate).isAfter(currentTime)) {
         startDateParent.classList.remove("input-invalid")
         startDateParent.classList.add("input-valid")
@@ -57,12 +49,10 @@ form1.addEventListener("submit", function (e) {
         startDateParent.classList.remove("input-valid")
         dateRequired.innerText = "Start Date is required."
     }
-
     let daysInput = document.querySelector("#days");
     let days = daysInput.value;
     let daysParent = document.querySelector("#days-field");
     let daysRequired = document.querySelector(".days-required")
-
     if (days > 0 && days < 30) {
         daysParent.classList.remove("input-invalid")
         daysParent.classList.add("input-valid")
@@ -71,12 +61,10 @@ form1.addEventListener("submit", function (e) {
         daysParent.classList.remove("input-valid")
         daysRequired.innerText = "Number of days parking is required."
     }
-
     let creditCardInput = document.querySelector("#credit-card")
     let creditCard = creditCardInput.value
     let creditCardParent = creditCardInput.parentNode
     let creditRequired = document.querySelector(".credit-required")
-
     if (validateCardNumber(creditCard) == true) {
         creditCardParent.classList.remove("input-invalid")
         creditCardParent.classList.add("input-valid")
@@ -85,12 +73,10 @@ form1.addEventListener("submit", function (e) {
         creditCardParent.classList.remove("input-valid")
         creditRequired.innerText = "Credit Card Number is required."
     }
-
     let cvvInput = document.querySelector("#cvv")
     let cvv = cvvInput.value
     let cvvParent = cvvInput.parentNode
     let cvvRequired = document.querySelector(".cvv-required")
-
     if (cvv.length === 3) {
         cvvParent.classList.remove("input-invalid")
         cvvParent.classList.add("input-valid")
@@ -99,7 +85,6 @@ form1.addEventListener("submit", function (e) {
         cvvParent.classList.remove("input-valid")
         cvvRequired.innerText = "CVV is required."
     }
-
     let expInput = document.querySelector("#expiration")
     let exp = expInput.value
     let expParent = expInput.parentNode
@@ -116,7 +101,6 @@ form1.addEventListener("submit", function (e) {
     let inputFields = document.querySelectorAll(".input-field")
     let total = document.querySelector('#total')
     let cost = calcCost(startDate,days)
-
     function calcCost(date, days) {
         let dur = moment(date)
         let sum = 0;
@@ -142,7 +126,6 @@ form1.addEventListener("submit", function (e) {
     
         return luhnCheck(number);
     }
-    
     function luhnCheck(val) {
         var sum = 0;
         for (var i = 0; i < val.length; i++) {
@@ -157,7 +140,6 @@ form1.addEventListener("submit", function (e) {
         }
         return (sum % 10) == 0;
     }
-
     for (let a of inputFields) {
         let b = a.className
         if (b !== "input-field input-invalid") {
