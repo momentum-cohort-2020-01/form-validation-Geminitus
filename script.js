@@ -121,7 +121,7 @@ form1.addEventListener("submit", function (e) {
         let dur = moment(date)
         let sum = 0;
         while (days > 0) {
-            if (dur.weekday() === dur.weekday(0) || dur.weekday() === dur.weekday(6)) {
+            if (dur.weekday() == 0 || dur.weekday() == 6) {
                 sum += 7
                 days -= 1
                 dur = dur.add('days',1)
