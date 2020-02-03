@@ -150,9 +150,9 @@ form1.addEventListener('submit', function (e) {
     }
     return (sum % 10) == 0
   }
-  for (let a of inputFields) {
-    let b = a.className
-    if (b !== 'input-field input-invalid text-danger') {
+  for (let all of inputFields) {
+    let inputParentClasses = all.className
+    if (inputParentClasses !== 'input-field input-invalid text-danger') {
       total.innerHTML = '$ ' + cost
     } else {
       total.innerHTML = ''
