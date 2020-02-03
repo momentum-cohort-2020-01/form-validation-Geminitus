@@ -37,6 +37,7 @@ form1.addEventListener('submit', function (e) {
     carParent.classList.remove('input-valid')
     carGramps.classList.add('input-invalid')
     carGramps.classList.remove('input-valid')
+    carGramps.classList.add('text-danger')
     carRequired.innerText = 'Car Year/Make/Model is required.'
   }
   const startDateInput = document.querySelector('#start-date')
@@ -50,6 +51,7 @@ form1.addEventListener('submit', function (e) {
   } else {
     startDateParent.classList.add('input-invalid')
     startDateParent.classList.remove('input-valid')
+    startDateParent.classList.add('text-danger')
     dateRequired.innerText = 'Start Date is required.'
   }
   const daysInput = document.querySelector('#days')
@@ -62,6 +64,7 @@ form1.addEventListener('submit', function (e) {
   } else {
     daysParent.classList.add('input-invalid')
     daysParent.classList.remove('input-valid')
+    daysParent.classList.add('text-danger')
     daysRequired.innerText = 'Number of days parking is required.'
   }
   const creditCardInput = document.querySelector('#credit-card')
@@ -75,6 +78,7 @@ form1.addEventListener('submit', function (e) {
   } else {
     creditCardParent.classList.add('input-invalid')
     creditCardParent.classList.remove('input-valid')
+    creditCardParent.classList.add('text-danger')
     creditRequired.innerText = 'Credit Card Number is required.'
   }
   const cvvInput = document.querySelector('#cvv')
@@ -87,6 +91,7 @@ form1.addEventListener('submit', function (e) {
   } else {
     cvvParent.classList.add('input-invalid')
     cvvParent.classList.remove('input-valid')
+    cvvParent.classList.add('text-danger')
     cvvRequired.innerText = 'CVV is required.'
   }
   const expInput = document.querySelector('#expiration')
@@ -97,12 +102,13 @@ form1.addEventListener('submit', function (e) {
   const year = exp.slice(2)
   const expDate = '20' + year + '-' + month + '-01'
 
-  if (expDate.isAfter(currentTime)) {
+  if (moment(expDate).isAfter(currentTime)) {
     expParent.classList.remove('input-invalid')
     expParent.classList.add('input-valid')
   } else {
     expParent.classList.add('input-invalid')
     expParent.classList.remove('input-valid')
+    expParent.classList.add('text-danger')
     expRequired.innerText = 'Expiration Date is required.'
   }
   const inputFields = document.querySelectorAll('.input-field')
@@ -144,9 +150,9 @@ form1.addEventListener('submit', function (e) {
     }
     return (sum % 10) == 0
   }
-  for (const a of inputFields) {
-    const b = a.className
-    if (b !== 'input-field input-invalid') {
+  for (let a of inputFields) {
+    let b = a.className
+    if (b !== 'input-field input-invalid text-danger') {
       total.innerHTML = '$ ' + cost
     } else {
       total.innerHTML = ''
